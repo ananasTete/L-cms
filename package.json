@@ -5,10 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "core-js": "^3.6.5",
+    "dayjs": "^1.11.1",
+    "element-plus": "^2.1.10",
+    "normalize.css": "^8.0.1",
+    "socket.io-client": "^4.5.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -25,6 +31,8 @@
     "eslint-plugin-vue": "^7.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "unplugin-auto-import": "^0.7.1",
+    "unplugin-vue-components": "^0.19.3"
   }
 }
