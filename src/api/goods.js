@@ -6,9 +6,48 @@ export function getAllFlower() {
   })
 }
 
+export function newCategory(newData) {
+  return request.post({
+    url: `/category`,
+    data: newData
+  })
+}
+
+export function deleteCategory(id) {
+  return request.delete({
+    url: `/category/${id}`
+  })
+}
+
+export function newLabel(id, newData) {
+  return request.post({
+    url: `/category/${id}/label`,
+    data: newData
+  })
+}
+
+export function deleteLabel(id, data) {
+  return request.delete({
+    url: `/category/label/${id}`,
+    data
+  })
+}
+
 export function getAllCategory() {
   return request.get({
     url: '/category/label/list'
+  })
+}
+
+export function getAllOrders() {
+  return request.get({
+    url: '/order'
+  })
+}
+
+export function putGoods(id) {
+  return request.get({
+    url: `/put/${id}`
   })
 }
 

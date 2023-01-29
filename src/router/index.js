@@ -24,6 +24,14 @@ const routes = [
       {
         path: 'service',
         component: () => import('../components/HomeService.vue')
+      },
+      {
+        path: 'category',
+        component: () => import('../components/HomeCategory.vue')
+      },
+      {
+        path: 'order',
+        component: () => import('../components/HomeOrder.vue')
       }
     ]
   },

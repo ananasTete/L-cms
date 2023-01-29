@@ -64,13 +64,14 @@
       <el-table-column align="center" label="商品图片" width="150">
         <template #default="scope">
           <el-image
+            v-if="scope.row.img_url"
             class="img"
             :src="scope.row.img_url[0]"
             :preview-src-list="scope.row.img_url"
             :initial-index="0"
-            fit="fit"
             :preview-teleported="true"
           />
+          <p v-else>暂无图片</p>
         </template>
       </el-table-column>
 
@@ -124,13 +125,17 @@
             multiple
             :limit="4"
             :show-file-list="false"
-            :disabled="scope.row.img_url.lenght >= 4"
+            :disabled="
+              scope.row.img_url ? scope.row.img_url.length >= 4 : false
+            "
           >
             <template #trigger>
               <el-button
-                @click="beforeUpload"
+                @click="beforeUpload(scope.row.id)"
                 type="primary"
-                :disabled="scope.row.img_url.length >= 4"
+                :disabled="
+                  scope.row.img_url ? scope.row.img_url.length >= 4 : false
+                "
                 >上传</el-button
               >
             </template>
@@ -255,7 +260,7 @@ const data = reactive({ data: [] })
 function getFlowerInfo() {
   getAllFlower().then((res) => {
     data.data = res
-    console.log(data.data)
+    console.log('骑过去', data.data)
   })
 }
 getFlowerInfo()
@@ -308,6 +313,7 @@ function handleEdit(data) {
   goodInfo.value = { ...data }
   goodInfo.value.labels = new Set([...goodInfo.value.labels])
   goodInfo.value.img_url = new Set([...goodInfo.value.img_url])
+  getFlowerInfo()
 }
 function handleDelete(id) {
   deleteFlower(id)
@@ -359,7 +365,7 @@ function handleSearch() {
   searchData.value.soldCountH = Number(searchData.value.soldCountH)
 
   searchFlower(searchData.value).then((res) => {
-    console.log('res', res)
+    console.log('搜索', res)
     data.data = res
   })
 }
